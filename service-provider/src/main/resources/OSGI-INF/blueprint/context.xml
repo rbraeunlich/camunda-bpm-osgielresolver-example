@@ -8,6 +8,8 @@
 					value="org.apache.cxf.ws" />
 			<entry key="org.apache.cxf.ws.address"
 					value="http://localhost:9001/somethingservice"/>
+			<entry key="processExpression"
+					value="somethingService"/>
 		</service-properties>
 		<bean class="de.blogspot.wrongtracks.osgielresolver.provider.SomethingServiceImpl"/>
 	</service>

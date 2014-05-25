@@ -1,11 +1,29 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
-	<bean id="start"
-		class="de.blogspot.wrongtracks.osgielresolver.consumer.Activator"
-		init-method="init">
-		<property name="service" ref="somethingService" />
+	<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+		<property name="URL" value="jdbc:h2:mem:camunda;DB_CLOSE_DELAY=-1" />
+		<property name="user" value="sa" />
+		<property name="password" value="" />
+	</bean>
+
+	<bean id="activator"
+		class="de.blogspot.wrongtracks.osgielresolver.consumer.Activator">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="processEngine" factory-ref="activator" factory-method="createProcessEngine"
+		destroy-method="close" />
+
+	<service ref="processEngine" interface="org.camunda.bpm.engine.ProcessEngine" />
+
+	<bean id="processStarter"
+		class="de.blogspot.wrongtracks.osgielresolver.consumer.ProcessStarter"
+		init-method="startProcess">
+		<property name="engine" ref="processEngine"/>
 	</bean>
 
 	<reference id="somethingService"
-		interface="de.blogspot.wrongtracks.osgielresolver.api.SomethingService" />
+		interface="de.blogspot.wrongtracks.osgielresolver.api.SomethingService"
+		filter="(processExpression=somethingService)">
+	</reference>
 </blueprint>

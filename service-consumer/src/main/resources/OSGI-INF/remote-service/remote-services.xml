@@ -9,5 +9,7 @@
   				value="http://localhost:9001/somethingservice"/>
   	<property name="service.imported.configs"
   				value="org.apache.cxf.ws"/>
+  	<property name="processExpression" 
+  				value="somethingService"/>
   </endpoint-description>
  </endpoint-descriptions>
