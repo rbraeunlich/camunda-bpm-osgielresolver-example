@@ -1,0 +1,13 @@
+<endpoint-descriptions xmlns="http://www.osgi.org/xmlns/rsa/v1.0.0">
+  <endpoint-description>
+  	<property name="objectClass">
+  		<array>
+  			<value>de.blogspot.wrongtracks.osgielresolver.api.SomethingService</value>
+  		</array>
+  	</property>
+  	<property name="endpoint.id"
+  				value="http://localhost:9001/somethingservice"/>
+  	<property name="service.imported.configs"
+  				value="org.apache.cxf.ws"/>
+  </endpoint-description>
+ </endpoint-descriptions>

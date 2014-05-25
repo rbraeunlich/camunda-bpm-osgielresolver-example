@@ -1,0 +1,11 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<bean id="start"
+		class="de.blogspot.wrongtracks.osgielresolver.consumer.Activator"
+		init-method="init">
+		<property name="service" ref="somethingService" />
+	</bean>
+
+	<reference id="somethingService"
+		interface="de.blogspot.wrongtracks.osgielresolver.api.SomethingService" />
+</blueprint>

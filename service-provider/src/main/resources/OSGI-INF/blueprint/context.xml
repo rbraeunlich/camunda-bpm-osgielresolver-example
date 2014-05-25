@@ -1,0 +1,15 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<service interface="de.blogspot.wrongtracks.osgielresolver.api.SomethingService">
+		<service-properties>
+			<entry key="service.exported.interfaces"
+					value="de.blogspot.wrongtracks.osgielresolver.api.SomethingService"/>
+			<entry key="service.exported.configs"
+					value="org.apache.cxf.ws" />
+			<entry key="org.apache.cxf.ws.address"
+					value="http://localhost:9001/somethingservice"/>
+		</service-properties>
+		<bean class="de.blogspot.wrongtracks.osgielresolver.provider.SomethingServiceImpl"/>
+	</service>
+
+</blueprint>
